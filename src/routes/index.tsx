@@ -22,11 +22,19 @@ function HomeComponent() {
 
   const movies = useGetMovieList(state);
 
+  React.useEffect(() => {
+    if(!movies.isFetching) {
+      movies.refetch();
+    }
+  }, [state])
+
   const onLoadMore = React.useCallback(() => {
     if (!movies.isFetching) movies.fetchNextPage();
   }, [state, movies]);
 
-  const onRefresh = React.useCallback(() => movies.refetch(), [state]);
+  const onRefresh = React.useCallback(() => {
+    movies.refetch();
+  }, [state]);
 
   const totalItems = React.useMemo(
     () =>
@@ -39,7 +47,7 @@ function HomeComponent() {
 
   return (
     <div className="">
-      <Navbar />
+      <Navbar state={state} setState={setState} />
       <InfiniteScroll
         dataLength={totalItems ?? 0}
         next={onLoadMore}
@@ -52,7 +60,6 @@ function HomeComponent() {
             </p>
           )
         }
-        // below props only if you need pull down functionality
         refreshFunction={onRefresh}
         pullDownToRefresh
         pullDownToRefreshThreshold={50}
