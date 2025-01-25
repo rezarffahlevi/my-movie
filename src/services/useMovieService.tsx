@@ -47,7 +47,7 @@ export type MovieListParams = {
 export const useGetMovieList = (params: MovieListParams) => {
   let isSearch = params.keyword != "";
   return useInfiniteQuery({
-    queryKey: [isSearch ? "search" : params.category],
+    queryKey: [isSearch ? params.keyword : params.category],
     queryFn: ({ pageParam }) => {
       let url = "/movie/now_playing";
       switch (params.category) {

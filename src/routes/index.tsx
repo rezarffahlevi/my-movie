@@ -6,9 +6,9 @@ import {
   MovieListParams,
   useGetMovieList,
 } from "../services/useMovieService";
-import InfiniteScroll from "react-infinite-scroll-component";
 import { BASE_URL_IMAGE } from "../utils/constants";
 import { MovieCard } from "../components/card/movieCard";
+import { InfiniteScroll } from "../components/scroll/infinite-scroll";
 
 export const Route = createFileRoute("/")({
   component: HomeComponent,
@@ -23,10 +23,10 @@ function HomeComponent() {
   const movies = useGetMovieList(state);
 
   React.useEffect(() => {
-    if(!movies.isFetching) {
-      movies.refetch();
+    if (!movies.isFetching) {
+      onRefresh();
     }
-  }, [state])
+  }, [state]);
 
   const onLoadMore = React.useCallback(() => {
     if (!movies.isFetching) movies.fetchNextPage();
@@ -42,15 +42,15 @@ function HomeComponent() {
         (total, page) => total + (page?.results?.length ?? 0),
         0
       ),
-    [movies]
+    [movies, state]
   );
-
+  console.log(totalItems, movies.data?.pageParams);
+  
   return (
     <div className="">
       <Navbar state={state} setState={setState} />
       <InfiniteScroll
-        dataLength={totalItems ?? 0}
-        next={onLoadMore}
+        load={onLoadMore}
         hasMore={movies.hasNextPage}
         loader={<h4>Loading...</h4>}
         endMessage={
@@ -59,15 +59,6 @@ function HomeComponent() {
               <b>Yay! You have seen it all</b>
             </p>
           )
-        }
-        refreshFunction={onRefresh}
-        pullDownToRefresh
-        pullDownToRefreshThreshold={50}
-        pullDownToRefreshContent={
-          <h3 style={{ textAlign: "center" }}>&#8595; Pull down to refresh</h3>
-        }
-        releaseToRefreshContent={
-          <h3 style={{ textAlign: "center" }}>&#8593; Release to refresh</h3>
         }
       >
         <div className="flex flex-wrap p-4 w-full content-between">
