@@ -102,7 +102,7 @@ export const NavbarWithBack: FC<NavbarWithBackProps> = React.memo((props) => {
       {canGoBack ? (
         <button
           onClick={() => router.history.back()}
-          className="text-2xl font-bold px-4 flex"
+          className="text-2xl font-bold px-4 flex items-center justify-center content-center"
         >
           <img
             src={"/assets/icons/arrow-back.svg"}
