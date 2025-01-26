@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { CardShimmer } from './CardShimmer';
+import { CardShimmer } from './CCardShimmer';
 import { MovieDetailShimmer } from './MovieDetailShimmer';
 
 jest.mock('./CardShimmer', () => ({

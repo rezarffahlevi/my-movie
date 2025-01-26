@@ -1,5 +1,5 @@
 import React from "react";
-import { CardShimmer } from "./CardShimmer";
+import { CardShimmer } from "./CCardShimmer";
 
 export const MovieDetailShimmer: React.FC = React.memo(() => {
   return (

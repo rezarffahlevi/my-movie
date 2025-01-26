@@ -6,12 +6,12 @@ import {
 } from "../../services/movie/useMovieService";
 import { BASE_URL_IMAGE, IMG_404 } from "../../utils/constants";
 import { minutesToHours, numberFormat } from "../../utils/utils";
-import { NavbarWithBack } from "../../components/navbar/Navbar";
+import { NavbarWithBack } from "../../components/navbar/NNavbar";
 import { Crew } from "../../services/movie/type";
 import { MovieDetailShimmer } from "../../components/shimmer/MovieDetailShimmer";
-import { SectionMovieHeader } from "../../components/section/SectionMovieHeader";
-import { LabelInfo } from "../../components/label/LabelInfo";
-import { CastCard } from "../../components/card/CastCard";
+import { SectionMovieHeader } from "../../components/section/SSectionMovieHeader";
+import { LabelInfo } from "../../components/label/LLabelInfo";
+import { CastCard } from "../../components/card/CCastCard";
 
 export const Route = createFileRoute("/movie/$movieId")({
   component: DetailComponent,

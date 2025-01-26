@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { IMG_404 } from "../../utils/constants";
 import { minutesToHours } from "../../utils/utils";
-import { LabelInfo } from "../label/LabelInfo";
+import { LabelInfo } from "../label/LLabelInfo";
 
 type Props = {
   poster: string | undefined;

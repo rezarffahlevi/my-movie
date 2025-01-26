@@ -2,7 +2,7 @@ import * as React from "react";
 import { Link, Outlet, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/router-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Navbar } from "../components/navbar/Navbar";
+import { Navbar } from "../components/navbar/NNavbar";
 
 export const Route = createRootRoute({
   component: App,

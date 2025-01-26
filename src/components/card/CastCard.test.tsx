@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { CastCard } from "./CastCard"; 
+import { CastCard } from "./CCastCard"; 
 import { BASE_URL_IMAGE, IMG_404 } from "../../utils/constants";
 
 describe("CastCard", () => {

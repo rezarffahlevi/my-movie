@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { CardShimmer } from './CardShimmer';
+import { CardShimmer } from './CCardShimmer';
 
 describe('CardShimmer', () => {
   test('renders default number of shimmer placeholders (12)', () => {

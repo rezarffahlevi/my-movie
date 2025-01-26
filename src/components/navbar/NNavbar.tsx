@@ -35,7 +35,7 @@ export const Navbar: FC<Props> = React.memo((props) => {
         }}
         activeOptions={{ exact: true }}
       >
-        My Movie
+        Movie Explorer
       </Link>
       {/* <Link
         to="/about"
