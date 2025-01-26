@@ -9,7 +9,7 @@ export const LabelInfo: FC<Props> = React.memo((props) => {
   return (
     <div>
       <p className="font-bold">{props.label}</p>
-      <p className="">{props.value}</p>
+      <p className="">{props.value == '' ? '-' : props.value}</p>
     </div>
   );
 });

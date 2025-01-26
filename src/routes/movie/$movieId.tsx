@@ -3,25 +3,25 @@ import { createFileRoute } from "@tanstack/react-router";
 import {
   useGetMovieCredits,
   useGetMovieDetail,
-} from "../services/movie/useMovieService";
-import { BASE_URL_IMAGE, IMG_404 } from "../utils/constants";
-import { minutesToHours, numberFormat } from "../utils/utils";
-import { NavbarWithBack } from "../components/navbar/navbar";
-import { Crew } from "../services/movie/type";
-import { LabelInfo } from "../components/label/labelInfo";
-import { SectionMovieHeader } from "../components/section/sectionMovieHeader";
-import { CastCard } from "../components/card/castCard";
-import { MovieDetailShimmer } from "../components/shimmer/movieDetailShimmer";
+} from "../../services/movie/useMovieService";
+import { BASE_URL_IMAGE, IMG_404 } from "../../utils/constants";
+import { minutesToHours, numberFormat } from "../../utils/utils";
+import { NavbarWithBack } from "../../components/navbar/navbar";
+import { Crew } from "../../services/movie/type";
+import { LabelInfo } from "../../components/label/labelInfo";
+import { SectionMovieHeader } from "../../components/section/sectionMovieHeader";
+import { CastCard } from "../../components/card/castCard";
+import { MovieDetailShimmer } from "../../components/shimmer/movieDetailShimmer";
 
-export const Route = createFileRoute("/detail/$id")({
+export const Route = createFileRoute("/movie/$movieId")({
   component: DetailComponent,
 });
 
 function DetailComponent() {
-  const { id } = Route.useParams();
+  const { movieId } = Route.useParams();
 
-  const movie = useGetMovieDetail(id);
-  const credits = useGetMovieCredits(id);
+  const movie = useGetMovieDetail(movieId);
+  const credits = useGetMovieCredits(movieId);
 
   React.useEffect(() => {
     window.scrollTo({

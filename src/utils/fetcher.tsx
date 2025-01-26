@@ -11,7 +11,7 @@ type FetchOptions = {
   method?: "GET" | "POST" | "PUT" | "DELETE";
 };
 
-export const fetcher = async (url: string, params: FetchOptions) => {
+export const fetcher = async (url: string, params?: FetchOptions) => {
   let option = {
     method: params?.method ?? "GET",
     headers: {

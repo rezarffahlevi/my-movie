@@ -58,13 +58,13 @@ export const useGetMovieList = (params: MovieListParams) => {
 export const useGetMovieDetail = (id: string) => {
   return useQuery<MovieDetails>({
     queryKey: ["movie", id],
-    queryFn: () => fetcher(`/movie/${id}`, {}),
+    queryFn: () => fetcher(`/movie/${id}`),
   });
 };
 
 export const useGetMovieCredits = (id: string) => {
   return useQuery<CreditsResponse>({
     queryKey: ["credits", id],
-    queryFn: () => fetcher(`/movie/${id}/credits`, {}),
+    queryFn: () => fetcher(`/movie/${id}/credits`),
   });
 };

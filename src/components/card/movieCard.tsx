@@ -14,7 +14,7 @@ export const MovieCard: FC<Props> = React.memo((props) => {
   return (
     <Link
       key={props.id}
-      to={"/detail/" + props.id}
+      to={"/movie/" + props.id}
       className="relative p-4 basis-1/6 text-center justify-items-center group"
     >
       <img
