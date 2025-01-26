@@ -105,7 +105,7 @@ export const NavbarWithBack: FC<NavbarWithBackProps> = React.memo((props) => {
           className="text-2xl font-bold px-4 flex"
         >
           <img
-            src={"../../../public/assets/icons/arrow-back.svg"}
+            src={"/assets/icons/arrow-back.svg"}
             className="h-9"
           />
           {props.title}

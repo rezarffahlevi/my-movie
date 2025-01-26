@@ -51,7 +51,7 @@ export const SectionMovieHeader: FC<Props> = React.memo((props) => {
           <label>{minutesToHours(Number(props.runtime))}</label>
         </div>
         <div className="flex text-2xl items-center">
-          <img src="../../public/assets/icons/star.png" className="h-6 mr-2" />{" "}
+          <img src="/assets/icons/star.png" className="h-6 mr-2" />{" "}
           {props?.voteAverage} ({props?.voteCount} Votes)
         </div>
         <p className="text-xl text-gray-300 italic">{props?.tagline}</p>
