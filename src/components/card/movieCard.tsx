@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import React, { FC } from "react";
 import { IMG_404 } from "../../utils/constants";
 
@@ -8,14 +7,15 @@ type Props = {
   description?: string | null | undefined;
   year: number;
   id?: string | number;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 export const MovieCard: FC<Props> = React.memo((props) => {
   return (
-    <Link
+    <button
       key={props.id}
-      to={"/movie/" + props.id}
       className="relative p-4 basis-1/6 text-center justify-items-center group"
+      onClick={props.onClick}
     >
       <img
         src={props.image}
@@ -37,6 +37,6 @@ export const MovieCard: FC<Props> = React.memo((props) => {
           {props.description}
         </p>
       </div>
-    </Link>
+    </button>
   );
 });

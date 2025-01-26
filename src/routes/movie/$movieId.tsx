@@ -8,7 +8,7 @@ import { BASE_URL_IMAGE, IMG_404 } from "../../utils/constants";
 import { minutesToHours, numberFormat } from "../../utils/utils";
 import { NavbarWithBack } from "../../components/navbar/Navbar";
 import { Crew } from "../../services/movie/type";
-import { MovieDetailShimmer } from "../../components/shimmer/CovieDetailShimmer";
+import { MovieDetailShimmer } from "../../components/shimmer/MovieDetailShimmer";
 import { SectionMovieHeader } from "../../components/section/SectionMovieHeader";
 import { LabelInfo } from "../../components/label/LabelInfo";
 import { CastCard } from "../../components/card/CastCard";

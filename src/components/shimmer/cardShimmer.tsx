@@ -10,7 +10,7 @@ export const CardShimmer: FC<Props> = React.memo((props) => {
       {Array(props.count ?? 12)
         .fill(0)
         .map((_, index) => (
-          <div key={index} className="space-y-4">
+          <div key={index} className="space-y-4" role="presentation">
             {/* Image Placeholder */}
             <div className="relative w-full h-64 bg-gray-300 rounded-md overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-full animate-shimmer"></div>
