@@ -5,43 +5,9 @@ import {
   useQuery,
   UseQueryResult,
 } from "@tanstack/react-query";
-import { fetcher } from "../utils/fetcher";
-import { CATEGORIES } from "../utils/constants";
-
-export type BaseResponse<TResult> = {
-  dates: Dates;
-  page: number;
-  results: TResult;
-  total_pages: number;
-  total_results: number;
-};
-
-interface Dates {
-  maximum: string;
-  minimum: string;
-}
-
-export interface Movie {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-}
-
-export type MovieListParams = {
-  category: string;
-  keyword: string;
-};
+import { fetcher } from "../../utils/fetcher";
+import { CATEGORIES } from "../../utils/constants";
+import { CreditsResponse, MovieDetails, MovieListParams } from "./type.d";
 
 // Queries
 export const useGetMovieList = (params: MovieListParams) => {
@@ -86,5 +52,19 @@ export const useGetMovieList = (params: MovieListParams) => {
       }
       return lastPageParam + 1;
     },
+  });
+};
+
+export const useGetMovieDetail = (id: string) => {
+  return useQuery<MovieDetails>({
+    queryKey: ["movie", id],
+    queryFn: () => fetcher(`/movie/${id}`, {}),
+  });
+};
+
+export const useGetMovieCredits = (id: string) => {
+  return useQuery<CreditsResponse>({
+    queryKey: ["credits", id],
+    queryFn: () => fetcher(`/movie/${id}/credits`, {}),
   });
 };

@@ -1,8 +1,8 @@
 import React, { FC, useCallback, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useCanGoBack, useRouter } from "@tanstack/react-router";
 import { CATEGORIES } from "../../utils/constants";
-import { MovieListParams } from "../../services/useMovieService";
-import { debounce } from "../../utils/utils";
+import { MovieListParams } from "../../services/movie/type";
+
 type Props = {
   state: MovieListParams;
   setState: Function;
@@ -14,7 +14,7 @@ export const Navbar: FC<Props> = React.memo((props) => {
   const handleSearch = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setKeyword(e.target.value);
-      if(timeoutId) clearTimeout(timeoutId);
+      if (timeoutId) clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
         props.setState((prevState: MovieListParams) => ({
           ...prevState,
@@ -87,6 +87,30 @@ export const Navbar: FC<Props> = React.memo((props) => {
           )}
         </select>
       </div>
+    </div>
+  );
+});
+
+type NavbarWithBackProps = {
+  title: string | undefined;
+};
+export const NavbarWithBack: FC<NavbarWithBackProps> = React.memo((props) => {
+  const router = useRouter();
+  const canGoBack = useCanGoBack();
+  return (
+    <div className="sticky bg-[#1f2937] z-50 top-0 p-3 flex content-between">
+      {canGoBack ? (
+        <button
+          onClick={() => router.history.back()}
+          className="text-2xl font-bold px-4 flex"
+        >
+          <img
+            src={"../../../public/assets/icons/arrow-back.svg"}
+            className="h-9"
+          />
+          {props.title}
+        </button>
+      ) : null}
     </div>
   );
 });

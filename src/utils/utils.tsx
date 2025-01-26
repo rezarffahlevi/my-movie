@@ -19,8 +19,8 @@ export function titleCase(str: string) {
     return `${currency || 'Rp'}${numberFormat(number)}`;
   }
   
-  export function numberFormat(number: number) {
-    return number.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+  export function numberFormat(number: number, separator = '.'): string {
+    return number.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, `$1${separator}`);
   }
   export function objectToQueryParams(
     params?: Record<string, any> | undefined,
@@ -39,17 +39,9 @@ export function titleCase(str: string) {
     else return '';
   }
   
-  export function debounce<T extends (...args: any[]) => void>(
-    func: T,
-    delay: number,
-  ): (...args: Parameters<T>) => void {
-    let timeoutId: ReturnType<typeof setTimeout>;
-    return (...args: Parameters<T>) => {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-      timeoutId = setTimeout(() => {
-        func(...args);
-      }, delay);
-    };
-  }
+  export const minutesToHours = (totalMinutes: number): string => {
+    const hours = Math.floor(totalMinutes / 60); // Get the number of full hours
+    const minutes = totalMinutes % 60;         // Get the remaining minutes
+    return `${hours}h ${minutes}m`;            // Format as "Xh Ym"
+  };
+  

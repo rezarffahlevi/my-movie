@@ -1,4 +1,4 @@
-import { BASE_URL } from "./constants";
+import { BASE_URL, TOKEN } from "./constants";
 import { objectToQueryParams } from "./utils";
 
 type FetchOptions = {
@@ -17,8 +17,7 @@ export const fetcher = async (url: string, params: FetchOptions) => {
     headers: {
       "Content-Type": "application/json",
       Authorization:
-        "Bearer " +
-        "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMWE4MDk0ZGE4YjMzYjMxMGIzZDViYjgxYTI2YmE5YSIsIm5iZiI6MTczNzc4OTAzNi4zNzMsInN1YiI6IjY3OTQ4ZTZjNDRlZjM5Yzg2MDE4N2RmMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.LycrQuf-LSxX3rzKNRW7II-ZlhpQh8KSwyNkz6ZXIGg",
+        "Bearer " + TOKEN,
       ...params?.header,
     },
     ...params?.option,

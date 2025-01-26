@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import React, { FC } from "react";
+import { IMG_404 } from "../../utils/constants";
 
 type Props = {
   image: string;
@@ -10,7 +11,6 @@ type Props = {
 };
 
 export const MovieCard: FC<Props> = React.memo((props) => {
-  const imgNotFound = 'https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg'
   return (
     <Link
       key={props.id}
@@ -20,9 +20,9 @@ export const MovieCard: FC<Props> = React.memo((props) => {
       <img
         src={props.image}
         alt={props.title}
-        className="rounded-sm self-center object-cover transform transition duration-300 group-hover:scale-75"
+        className="rounded-sm object-cover transform transition duration-300 group-hover:scale-75"
         onError={(e) => {
-          e.currentTarget.src = imgNotFound;
+          e.currentTarget.src = IMG_404;
         }}
       />
       <p className="pt-2 group-hover:opacity-0">
