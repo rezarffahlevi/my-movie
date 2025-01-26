@@ -14,7 +14,7 @@ export const MovieCard: FC<Props> = React.memo((props) => {
   return (
     <button
       key={props.id}
-      className="relative p-4 basis-1/6 text-center justify-items-center group"
+      className="relative p-4 basis-1/2 sm:basis-1/3 md:basis-1/5 xl:basis-1/6 text-center justify-items-center group"
       onClick={props.onClick}
     >
       <img

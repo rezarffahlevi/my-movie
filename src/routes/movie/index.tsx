@@ -7,6 +7,7 @@ import { MovieCard } from "../../components/card/MovieCard";
 import { InfiniteScroll } from "../../components/scroll/InfiniteScroll";
 import { Movie, MovieListParams } from "../../services/movie/type";
 import { CardShimmer } from "../../components/shimmer/CardShimmer";
+import { useBreakpoint } from "../../hooks/useBreakpoint";
 
 export const MovieComponent = () => {
   const [state, setState] = React.useState<MovieListParams>({
@@ -14,6 +15,7 @@ export const MovieComponent = () => {
     keyword: "",
   });
   const router = useRouter();
+  const breakpoints = useBreakpoint();
 
   const movies = useGetMovieList(state);
 
@@ -53,10 +55,22 @@ export const MovieComponent = () => {
       <InfiniteScroll
         load={onLoadMore}
         hasMore={movies.hasNextPage}
-        loader={<CardShimmer count={6} />}
+        loader={
+          <CardShimmer
+            count={
+              breakpoints.isXs
+                ? 2
+                : breakpoints.isSm
+                  ? 2
+                  : breakpoints.isMd
+                    ? 4
+                    : 6
+            }
+          />
+        }
         endMessage={
           movies.isFetching ? (
-            <CardShimmer />
+            <CardShimmer count={6} />
           ) : (
             <p style={{ textAlign: "center" }}>
               <b>

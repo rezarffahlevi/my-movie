@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { IMG_404 } from "../../utils/constants";
 import { minutesToHours } from "../../utils/utils";
 import { LabelInfo } from "../label/LabelInfo";
+import { useBreakpoint } from "../../hooks/useBreakpoint";
 
 type Props = {
   poster: string | undefined;
@@ -22,12 +23,13 @@ type Props = {
 };
 
 export const SectionMovieHeader: FC<Props> = React.memo((props) => {
+  const breakpoints = useBreakpoint();
   return (
-    <div className="bg-gradient-to-b from-black via-transparent to-black bg-opacity-90 flex items-center justify-center py-8 px-48">
+    <div className="bg-gradient-to-b from-black via-transparent to-black bg-opacity-90 md:flex items-center justify-center py-8 md:px-6 lg:px-40">
       <img
         src={props?.poster}
         alt={props?.title}
-        className="h-[50vh] rounded-xl object-cover transform transition duration-300 group-hover:scale-75"
+        className="min-md:h-[50vh] max-sm:mb-8 max-md:w-3/5 max-md:mx-auto rounded-xl object-cover transform transition duration-300 group-hover:scale-75"
         onError={(e) => {
           e.currentTarget.src = IMG_404;
         }}
@@ -45,10 +47,14 @@ export const SectionMovieHeader: FC<Props> = React.memo((props) => {
           </div>
           <label className="ml-2">{props?.releaseDate}</label>
           <label className="ml-2">{props?.country}</label>
-          <div className="ml-4 mr-2 h-2 w-2 rounded-xl bg-white" />
-          <label>{props.genres}</label>
+          <div className="hidden lg:flex ml-4 mr-2 h-2 w-2 rounded-xl bg-white" />
+          <label className="hidden lg:flex">{props.genres}</label>
           <div className="ml-4 mr-2 h-2 w-2 rounded-xl bg-white" />
           <label>{minutesToHours(Number(props.runtime))}</label>
+        </div>
+        <div className="lg:hidden flex items-center my-4">
+          <div className="mr-2 h-2 w-2 rounded-xl bg-white" />
+          <label className="">{props.genres}</label>
         </div>
         <div className="flex text-2xl items-center">
           <img src="/assets/icons/star.png" className="h-6 mr-2" />{" "}

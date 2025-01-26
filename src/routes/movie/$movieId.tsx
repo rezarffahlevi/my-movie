@@ -85,8 +85,8 @@ function DetailComponent() {
             writerRole={writerRole?.map((dt) => dt.job)?.join(", ")}
           />
 
-          <p className="text-2xl pt-8 pb-2 px-20">Top Billed Cast</p>
-          <div className="overflow-x-auto mx-20 mb-20 py-4">
+          <p className="text-2xl pt-8 pb-2 px-4 mx-6 lg:px-20">Top Billed Cast</p>
+          <div className="overflow-x-auto px-4 mx-6 lg:mx-20 mb-20 py-4">
             <div className="flex ">
               {credits.data?.cast.map((cast) => (
                 <CastCard
