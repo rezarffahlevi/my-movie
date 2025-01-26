@@ -1,13 +1,12 @@
 import * as React from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "../components/navbar/navbar";
-import {
-  useGetMovieList,
-} from "../services/movie/useMovieService";
+import { useGetMovieList } from "../services/movie/useMovieService";
 import { BASE_URL_IMAGE } from "../utils/constants";
 import { MovieCard } from "../components/card/movieCard";
 import { InfiniteScroll } from "../components/scroll/infiniteScroll";
 import { Movie, MovieListParams } from "../services/movie/type";
+import { CardShimmer } from "../components/shimmer/cardShimmer";
 
 export const Route = createFileRoute("/")({
   component: HomeComponent,
@@ -28,8 +27,8 @@ function HomeComponent() {
   }, [state]);
 
   const onLoadMore = React.useCallback(() => {
-    console.log(state, movies.isFetching, movies.hasNextPage, 'loadmore');
-    
+    console.log(state, movies.isFetching, movies.hasNextPage, "loadmore");
+
     if (!movies.isFetching) movies.fetchNextPage();
   }, [state, movies]);
 
@@ -45,18 +44,25 @@ function HomeComponent() {
       ),
     [movies, state]
   );
-  
+
   return (
     <div className="">
       <Navbar state={state} setState={setState} />
+
       <InfiniteScroll
         load={onLoadMore}
         hasMore={movies.hasNextPage}
-        loader={<h4 className="text-center text-xl p-6 pb-10">Loading...</h4>}
+        loader={<CardShimmer count={6} />}
         endMessage={
-          !movies.isFetching && (
+          movies.isFetching ? (
+            <CardShimmer />
+          ) : (
             <p style={{ textAlign: "center" }}>
-              <b>Yay! You have seen it all</b>
+              <b>
+                {movies.isError
+                  ? movies.failureReason?.message
+                  : `Yay! You have seen it all`}
+              </b>
             </p>
           )
         }

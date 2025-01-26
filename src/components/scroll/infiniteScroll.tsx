@@ -20,45 +20,44 @@ export const InfiniteScroll: React.FC<InfiniteScrollProps> = React.memo(({
 
   const handleIntersect = useCallback(
     (entries: IntersectionObserverEntry[]) => {
-      const [entry] = entries; // Get the first entry
-      // console.log("Intersecting:", entry.isIntersecting, "Has More:", hasMore);
+      const [entry] = entries;
 
       if (entry.isIntersecting && hasMore) {
-        // console.log("Loading more...");
         load();
       }
     },
-    [load, hasMore] // Ensure the latest `hasMore` is used
+    [load, hasMore]
   );
 
   useEffect(() => {
-    // console.log("Setting up observer...");
-
-    // Initialize IntersectionObserver
     observerRef.current = new IntersectionObserver(handleIntersect, {
       root: null,
-      rootMargin: "200px", // Trigger early for smoother loading
-      threshold: 0.1, // Trigger when 10% of the sentinel is visible
+      rootMargin: "200px",
+      threshold: 0.1,
     });
 
     if (sentinelRef.current) {
-      // console.log("Observing sentinel:", sentinelRef.current);
       observerRef.current.observe(sentinelRef.current);
     }
 
-    // Cleanup on unmount
     return () => {
-      // console.log("Cleaning up observer...");
       observerRef.current?.disconnect();
     };
-  }, [handleIntersect]); // Ensure `handleIntersect` is up to date
+  }, [handleIntersect]);
 
   return (
     <div>
       {children}
-      <div ref={sentinelRef} style={{ height: "1px", visibility: "hidden" }}>
-        {hasMore && loader}
-      </div>
+
+      {/* Loader is always visible while loading */}
+      {hasMore && (
+        <div style={{ textAlign: "center", margin: "20px 0" }}>{loader}</div>
+      )}
+
+      {/* Hidden sentinel element for IntersectionObserver */}
+      <div ref={sentinelRef} style={{ height: "1px", visibility: "hidden" }} />
+
+      {/* End message */}
       {!hasMore && endMessage}
     </div>
   );
