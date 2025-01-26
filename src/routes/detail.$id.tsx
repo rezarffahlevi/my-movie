@@ -23,6 +23,13 @@ function DetailComponent() {
   const movie = useGetMovieDetail(id);
   const credits = useGetMovieCredits(id);
 
+  React.useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // Smooth scrolling
+    });
+  }, []);
+
   const director: Crew | undefined = React.useMemo(() => {
     return credits.data?.crew.find((crew) => {
       return crew.job === "Director";
@@ -52,7 +59,11 @@ function DetailComponent() {
       <NavbarWithBack title={"Back"} />
       {movie.isFetching ? (
         <MovieDetailShimmer />
-      ) : movie.isError ? <div className="text-2xl text-center p-12">{movie.failureReason?.message}</div> : (
+      ) : movie.isError ? (
+        <div className="text-2xl text-center p-12">
+          {movie.failureReason?.message}
+        </div>
+      ) : (
         <>
           <SectionMovieHeader
             poster={BASE_URL_IMAGE + movie.data?.poster_path}
