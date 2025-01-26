@@ -8,7 +8,7 @@ type FetchOptions = {
   body?: any;
   option?: any;
   onError?: Function;
-  method?: "GET" | "POST" | "PUT" | "DELETE";
+  method?: "GET" | "POST" | "PUT" | "DELETE" | string;
 };
 
 export const fetcher = async (url: string, params?: FetchOptions) => {

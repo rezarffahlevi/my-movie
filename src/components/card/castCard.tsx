@@ -13,7 +13,7 @@ export const CastCard: React.FC<Props> = React.memo((props) => {
       className="w-40 items-center mr-6 flex-shrink-0 bg-[#1f2937] rounded-lg"
     >
       <img
-        src={BASE_URL_IMAGE + props.avatar}
+        src={props.avatar ? BASE_URL_IMAGE + props.avatar : IMG_404}
         alt={props.name}
         className="w-40 h-30 object-cover rounded-lg"
         onError={(e) => {
