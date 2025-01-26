@@ -1,12 +1,12 @@
 import * as React from "react";
 import { createFileRoute, useRouter } from "@tanstack/react-router";
-import { Navbar } from "../../components/navbar/NNavbar";
+import { Navbar } from "../../components/navbar/Navbar";
 import { useGetMovieList } from "../../services/movie/useMovieService";
 import { BASE_URL_IMAGE } from "../../utils/constants";
-import { MovieCard } from "../../components/card/MMovieCard";
-import { InfiniteScroll } from "../../components/scroll/IInfiniteScroll";
+import { MovieCard } from "../../components/card/MovieCard";
+import { InfiniteScroll } from "../../components/scroll/InfiniteScroll";
 import { Movie, MovieListParams } from "../../services/movie/type";
-import { CardShimmer } from "../../components/shimmer/CCardShimmer";
+import { CardShimmer } from "../../components/shimmer/CardShimmer";
 
 export const MovieComponent = () => {
   const [state, setState] = React.useState<MovieListParams>({

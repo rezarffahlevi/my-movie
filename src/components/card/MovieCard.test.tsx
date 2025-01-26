@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { MovieCard } from "./MMovieCard";
+import { MovieCard } from "./MovieCard";
 import "@testing-library/jest-dom";
 import { IMG_404 } from "../../utils/constants";
 

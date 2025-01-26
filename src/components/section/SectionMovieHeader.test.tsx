@@ -1,7 +1,7 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import { SectionMovieHeader } from "./SSectionMovieHeader";
+import { SectionMovieHeader } from "./SectionMovieHeader";
 import { IMG_404 } from "../../utils/constants";
 
 describe("SectionMovieHeader", () => {
