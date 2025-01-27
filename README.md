@@ -19,10 +19,10 @@ You can easily access the web application [movie-explorer-zeta.vercel.](https://
 
 ### Screenshots
 #### Mobile
-<div style="justify-content: space-around; display:flex; gap: 10px; width:500px">
-  <img src="./docs/screenshoot/3.png" alt="1" width="500" height="auto" />
-  <img src="./docs/screenshoot/4.png" alt="2" width="500" height="auto" />
-  <img src="./docs/screenshoot/5.png" alt="2" width="500" height="auto" />
+<div style="justify-content: space-around; display: flex; gap: 10px;">
+  <img src="./docs/screenshoot/3.png" alt="1" width="200" height="auto" />
+  <img src="./docs/screenshoot/4.png" alt="2" width="200" height="auto" />
+  <img src="./docs/screenshoot/5.png" alt="2" width="200" height="auto" />
 </div>
 
 #### Dekstop
