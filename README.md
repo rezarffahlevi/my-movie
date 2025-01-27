@@ -27,8 +27,8 @@ You can easily access the web application [movie-explorer-zeta.vercel.](https://
 
 #### Dekstop
 <div style="justify-content: space-around; gap: 10px; width:500px">
-  <img src="./docs/screenshoot/1.png" alt="1" width="500" height="auto" />
-  <img src="./docs/screenshoot/2.png" alt="2" width="500" height="auto" />
+  <img src="./docs/screenshoot/2.png" alt="1" width="500" height="auto" />
+  <img src="./docs/screenshoot/1.png" alt="2" width="500" height="auto" />
 </div>
 
 ## Features
